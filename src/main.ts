@@ -6,24 +6,35 @@ interface PokemonResumo {
     peso: number;
 }
 
-async function buscarPokemon(): Promise<PokemonResumo[]> {
+async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | null> {
+
+    const url = `https://pokeapi.co/api/v2/pokemon/${nomeOuId}`;
+
     try {
-        const resposta = await
-fetch("https://pokeapi.co/api/v2/pokemon/pikachu");
+        const resposta = await fetch(url);
 
-    const dados: PokemonResumo[] = await resposta.json();
+        if (!resposta.ok) {
+            console.log(`[ERRO] Pokémon não encontrado: ${nomeOuId}`);
+            return null;
+        }
+        const dados: any = await resposta.json();
 
-        console.log("Id: ", dados.id);
-        console.log("Nome: ", dados.name);
-        console.log("Tipo: ", dados.types[0].type.name);
-        console.log("Altura: ", dados.height);
-        console.log("Peso: ", dados.weight);
+        const pokemon: PokemonResumo = {
+            id: dados.id,
+            nome: dados.name,
+            tipos: dados.types.map((item: any) => item.type.name),
+            altura: dados.height,
+            peso: dados.weight
+        };
 
-        return dados;
+        return pokemon;
+
     } catch (erro) {
         console.log("Erro ao buscar pokemons:", erro);
-        return [];
+        return null;
     }
 }
 
-buscarPokemon();
+buscarPokemon("pikachu").then((pokemon) => {
+    console.log(pokemon);
+});
