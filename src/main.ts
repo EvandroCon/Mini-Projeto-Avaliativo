@@ -35,6 +35,27 @@ async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | null> {
     }
 }
 
+let catalogo: PokemonResumo[] = [];
+
 buscarPokemon("pikachu").then((pokemon) => {
-    console.log(pokemon);
+   
+    if (pokemon !== null) {
+        catalogo = adicionarAoCatalogo(catalogo, pokemon);
+
+        console.log(catalogo);
+    }
 });
+
+function adicionarAoCatalogo(catalogo: PokemonResumo[], pokemon: PokemonResumo): PokemonResumo[] {
+    const jaExiste = catalogo.some((item) => item.id === pokemon.id);
+
+    if (jaExiste) {
+        console.log(`[AVISO] ${pokemon.nome} já está no catálogo.`);
+        return catalogo;
+    }
+
+    catalogo.push(pokemon);
+    
+    console.log(`[OK] ${pokemon.nome} adicionado ao catálogo.`);
+    return catalogo;
+}
