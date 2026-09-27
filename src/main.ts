@@ -6,6 +6,18 @@ interface PokemonResumo {
     peso: number;
 }
 
+interface PokemonApiResponse {
+    id: number;
+    name: string;
+    height: number;
+    weight: number;
+    types: {
+        type: {
+            name: string;
+        };
+    }[];
+}
+
 async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | null> {
 
     const url = `https://pokeapi.co/api/v2/pokemon/${nomeOuId}`;
