@@ -29,9 +29,9 @@ async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | null> {
             console.log(`[ERRO] Pokémon não encontrado: ${nomeOuId}`);
             return null;
         }
-        const dados: any = await resposta.json();
+        const dados: PokemonApiResponse = await resposta.json();
 
-        const pokemon: PokemonResumo = {
+        const pokemonResumo: PokemonResumo = {
             id: dados.id,
             nome: dados.name,
             tipos: dados.types.map((item: any) => item.type.name),
@@ -39,7 +39,8 @@ async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | null> {
             peso: dados.weight
         };
 
-        return pokemon;
+        console.log(`[OK] Pokémon encontrado: ${pokemonResumo.nome}`);
+        return pokemonResumo;
 
     } catch (erro) {
         console.log("Erro ao buscar pokemons:", erro);
