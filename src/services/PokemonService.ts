@@ -9,7 +9,7 @@ export function adicionarAoCatalogo(catalogo: PokemonResumo[], pokemon: PokemonR
     }
 
     catalogo.push(pokemon);
-    
+
     console.log(`[OK] ${pokemon.nome} adicionado ao catálogo.`);
     return catalogo;
 }
