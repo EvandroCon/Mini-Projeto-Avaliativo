@@ -48,7 +48,7 @@ async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | null> {
     }
 }
 
-let catalogo: PokemonResumo[] = [];
+/*let catalogo: PokemonResumo[] = [];
 
 buscarPokemon("pikachu").then((pokemon) => {
    
@@ -58,7 +58,7 @@ buscarPokemon("pikachu").then((pokemon) => {
         listarCatalogo(catalogo);
         removerDoCatalogo(catalogo, 25);
     }
-});
+});*/
 
 function adicionarAoCatalogo(catalogo: PokemonResumo[], pokemon: PokemonResumo): PokemonResumo[] {
     const jaExiste = catalogo.some((item) => item.id === pokemon.id);
@@ -103,3 +103,31 @@ function removerDoCatalogo(catalogo: PokemonResumo[], id: number): PokemonResumo
     console.log("[OK] Pokémon removido do catálogo.");
     return catalogo.filter((pokemon) => pokemon.id !== id);
 }
+
+async function main() {
+
+  let catalogo: PokemonResumo[] = [];
+
+  const pikachu = await buscarPokemon("pikachu");
+  if (pikachu !== null) {
+    catalogo = adicionarAoCatalogo(catalogo, pikachu);
+  }
+
+  const charmander = await buscarPokemon("charmander");
+  if (charmander !== null) {
+    catalogo = adicionarAoCatalogo(catalogo, charmander);
+  }
+
+  const pikachuDuplicado = await buscarPokemon("pikachu");
+  if (pikachuDuplicado !== null) {
+    catalogo = adicionarAoCatalogo(catalogo, pikachuDuplicado);
+  }
+
+  await buscarPokemon("pokemon-inexistente");
+  listarCatalogo(catalogo);
+  catalogo = removerDoCatalogo(catalogo, 25);
+  listarCatalogo(catalogo);
+
+}
+
+main();
