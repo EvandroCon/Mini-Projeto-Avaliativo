@@ -1,62 +1,9 @@
-import { PokemonApiResponse, PokemonResumo } from "./models/Pokemon";
-import { buscarPokemon } from "./services/PokeApiService";
-import { adicionarAoCatalogo, listarCatalogo, removerDoCatalogo } from "./services/PokemonService";
-import { CatalogoPokemon } from "./models/catalogoPokemon";
+import { testarPokeApiService } from "./testes/pokeApiService";
+import { testarCatalogo } from "./testes/catalogoPokemon";
 
 async function main() {
+    await testarPokeApiService();
 
-    let catalogo: PokemonResumo[] = [];
-
-    const pikachu = await buscarPokemon("pikachu");
-    if (pikachu !== null) {
-        catalogo = adicionarAoCatalogo(catalogo, pikachu);
-    }
-
-    const charmander = await buscarPokemon("charmander");
-    if (charmander !== null) {
-        catalogo = adicionarAoCatalogo(catalogo, charmander);
-    }
-
-    const pikachuDuplicado = await buscarPokemon("pikachu");
-    if (pikachuDuplicado !== null) {
-        catalogo = adicionarAoCatalogo(catalogo, pikachuDuplicado);
-    }
-
-    await buscarPokemon("pokemon-inexistente");
-    listarCatalogo(catalogo);
-    catalogo = removerDoCatalogo(catalogo, 25);
-    listarCatalogo(catalogo);
-
-}
-
-main();
-
-/*
-async function main() {
-    const catalogo = new CatalogoPokemon();
-
-    const pikachu = await buscarPokemon("pikachu");
-    if (pikachu !== null) {
-        catalogo.adicionar(pikachu);
-    }
-
-    const charmander = await buscarPokemon("charmander");
-    if (charmander !== null) {
-        catalogo.adicionar(charmander);
-    }
-
-    const pikachuDuplicado = await buscarPokemon("pikachu");
-    if (pikachuDuplicado !== null) {
-        catalogo.adicionar(pikachuDuplicado);
-    }
-
-    await buscarPokemon("pokemon-inexistente");
-
-    catalogo.listar();
-
-    catalogo.remover(25);
-
-    catalogo.listar();
+    await testarCatalogo();
 }
 main();
-*/
