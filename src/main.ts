@@ -3,7 +3,7 @@ import { buscarPokemon } from "./services/PokeApiService";
 import { adicionarAoCatalogo, listarCatalogo, removerDoCatalogo } from "./services/PokemonService";
 import { CatalogoPokemon } from "./models/catalogoPokemon";
 
-/*async function main() {
+async function main() {
 
     let catalogo: PokemonResumo[] = [];
 
@@ -30,8 +30,8 @@ import { CatalogoPokemon } from "./models/catalogoPokemon";
 }
 
 main();
-*/
 
+/*
 async function main() {
     const catalogo = new CatalogoPokemon();
 
@@ -59,3 +59,4 @@ async function main() {
     catalogo.listar();
 }
 main();
+*/
