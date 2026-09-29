@@ -1,4 +1,5 @@
 import { PokemonResumo } from "../models/Pokemon";
+import { formatarDetalhesPokemon } from "../utils/textFormatters";
 
 export function adicionarAoCatalogo(catalogo: PokemonResumo[], pokemon: PokemonResumo): PokemonResumo[] {
     const jaExiste = catalogo.some((item) => item.id === pokemon.id);
@@ -23,12 +24,7 @@ export function listarCatalogo(catalogo: PokemonResumo[]): void {
 
     console.log("Catálogo atual:");
     catalogo.forEach((pokemon) => {
-        console.log("ID:", pokemon.id);
-        console.log("Nome:", pokemon.nome);
-        console.log("Tipos:", pokemon.tipos.join(", "));
-        console.log("Altura:", pokemon.altura);
-        console.log("Peso:", pokemon.peso);
-        console.log("---------------------");
+        console.log(formatarDetalhesPokemon(pokemon));
     });
 }
 
