@@ -186,6 +186,14 @@ Link do Kanban:
 
 https://trello.com/b/x3MyCuGP/mini-projeto-avaliativo
 
+Link do video:
+
+https://drive.google.com/file/d/1DwEu7eXGvua_ChB13dpDRQuPZb1vjYrh/view?usp=drive_link
+
+Link dos slides da apresentação:
+
+https://docs.google.com/presentation/d/1VoGPZcLVQLfko2hemmT-6VaUjDUCxCZ-F1Osd-5ZvDE/edit?usp=sharing
+
 Branches utilizadas
 
 - main
