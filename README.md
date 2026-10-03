@@ -184,7 +184,7 @@ A classe CatalogoPokemon gerencia os Pokémons do catálogo. Ela possui uma atri
 Organização do Kanban
 Link do Kanban:
 
-https://trello.com/b/x3MyCuGP/mini-projeto-avaliativo
+https://trello.com/invite/b/6ab926a5a0b79af5cac12717/ATTIa555d2c00d3243fc45265e2d2257042e2AD215FB/mini-projeto-avaliativo
 
 Link do video:
 
